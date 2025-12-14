@@ -1,0 +1,23 @@
+services:
+  database:
+    image: postgres:16-alpine
+    container_name: linktrack-db
+    restart: always
+    ports:
+      - "${DB_PORT}:5432"
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      #initialisation de la BD et peuplement
+      # Ici c'est la version où ca prend tout les fichiers du dossier en compte
+      - ./backend/src/models:/docker-entrypoint-initdb.d
+
+      # Ici c'est la version où ca ne prend que un fichier en compte
+      #- ./backend/src/models/schema.sql:/docker-entrypoint-initdb.d/init.sql
+
+# Déclaration du volume de stockage
+volumes:
+  pgdata:
