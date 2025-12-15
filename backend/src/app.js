@@ -21,7 +21,7 @@ const pool = new Pool({
 
 app.get('/', async (req, res) => {
     try {
-        const result = await pool.query(`SELECT * FROM users;`);
+        const result = await pool.query(`SELECT * FROM links;`);
         console.log("Ca marche");
         res.json(result.rows);
     } catch (err) {
