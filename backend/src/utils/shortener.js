@@ -4,7 +4,7 @@
 // When user visits the short URL, the service retrieves the corresponding long URL from the db and redirects the use
 
 
-function shortlink(linkID) {
+export const shortlink = (linkID) => {
     //base 10 to base 62
     const base62 = {
         0: '0', 1: '1', 2: '2', 3: '3', 4: '4', 5: '5', 6: '6', 7: '7', 8: '8', 9: '9',
@@ -32,7 +32,7 @@ function shortlink(linkID) {
     return result;
 }
 
-function unshortlink(shortlink) {
+export const unshortlink = (shortlink) => {
 
     const base62reverse = {
         '0': 0, '1': 1, '2': 2, '3': 3, '4': 4, '5': 5, '6': 6, '7': 7, '8': 8, '9': 9,

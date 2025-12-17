@@ -1,4 +1,4 @@
-const { shortlink, unshortlink } = require('./urlShortenerAlgo');
+const { shortlink, unshortlink } = require('./shortener');
 
 console.log('Testing urlShortenerAlgo.js...');
 
