@@ -1,27 +1,19 @@
-const express = require('express');
-const { Pool } = require('pg');
-const cors = require('cors');
-const path = require('path');
+import express from 'express';
+import cors from 'cors';
+import path from 'path';
+import { fileURLToPath } from 'url';
+import pool from './config/dbConfig.js';
 
-require('dotenv').config({ path: path.join(__dirname, '../../.env') });
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const app = express();
 app.use(express.json());
 app.use(cors());
 
-const pool = new Pool({
-    user: process.env.POSTGRES_USER,
-    host: process.env.DB_HOST,
-    database: process.env.POSTGRES_DB,
-    password: process.env.POSTGRES_PASSWORD,
-    port: process.env.DB_PORT,
-});
-
-
-
 app.get('/', async (req, res) => {
     try {
-        const result = await pool.query(`SELECT * FROM links;`);
+        const result = await pool.query(`SELECT * FROM links; `);
         console.log("Ca marche");
         res.json(result.rows);
     } catch (err) {

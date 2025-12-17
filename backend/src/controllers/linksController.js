@@ -1,2 +1,1 @@
-const linksModel = require('../models/linksModel');
-
+import linksModel from '../models/linksModel.js';
