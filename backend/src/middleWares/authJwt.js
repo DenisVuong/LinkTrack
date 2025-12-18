@@ -21,19 +21,19 @@ const verifyToken = (req, res, next) => {
         if (err) {
             return res.status(401).json({ message: "Unauthorized!" });
         }
-        req.userId = decoded.id;
+        req.user = { userId: decoded.id };
         next();
     })
 };
 
 const isAdmin = async (req, res, next) => {
     try {
-        const user = await User.findUserById(req.userId);
+        const user = await User.findUserById(req.user.userId);
         if (!user) {
             return res.status(404).json({ message: "User not found." });
         }
 
-        const roles = await User.getUserRoles(req.userId);
+        const roles = await User.getUserRoles(req.user.userId);
 
         if (roles.includes("admin")) {
             return next();
@@ -47,12 +47,12 @@ const isAdmin = async (req, res, next) => {
 
 const isModerator = async (req, res, next) => {
     try {
-        const user = await User.findUserById(req.userId);
+        const user = await User.findUserById(req.user.userId);
         if (!user) {
             return res.status(404).json({ message: "User not found." });
         }
 
-        const roles = await User.getUserRoles(req.userId);
+        const roles = await User.getUserRoles(req.user.userId);
 
         if (roles.includes("moderator")) {
             return next();
@@ -66,12 +66,12 @@ const isModerator = async (req, res, next) => {
 
 const isModeratorOrAdmin = async (req, res, next) => {
     try {
-        const user = await User.findUserById(req.userId);
+        const user = await User.findUserById(req.user.userId);
         if (!user) {
             return res.status(404).json({ message: "User not found." });
         }
 
-        const roles = await User.getUserRoles(req.userId);
+        const roles = await User.getUserRoles(req.user.userId);
 
         if (roles.includes("moderator") || roles.includes("admin")) {
             return next();

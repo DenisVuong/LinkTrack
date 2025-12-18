@@ -9,6 +9,10 @@ export const createLink = async (req, res) => {
         return res.status(400).json({ error: "URL is required" });
     }
 
+    if (!original_url.startsWith('http://') && !original_url.startsWith('https://')) {
+        return res.status(400).json({ error: "Invalid URL format. Must start with http:// or https://" });
+    }
+
     try {
         // On demande prochain ID
         const nextId = await linkModel.getNextId();
@@ -19,7 +23,8 @@ export const createLink = async (req, res) => {
 
         res.status(201).json(newLink);
     } catch (err) {
-        res.status(500).json({ message: err.message });
+        console.error('Error creating link:', err);
+        res.status(500).json({ message: "An error occurred while creating the link" });
     }
 }
 
@@ -35,7 +40,8 @@ export const getMyLinks = async (req, res) => {
 
         res.status(200).json(allLinks);
     } catch (err) {
-        res.status(500).json({ message: err.message });
+        console.error('Error retrieving links:', err);
+        res.status(500).json({ message: "An error occurred while retrieving links" });
     }
 }
 
@@ -52,6 +58,7 @@ export const deleteLink = async (req, res) => {
 
         res.status(200).json({ message: "Link deleted successfully" });
     } catch (err) {
-        res.status(500).json({ message: err.message });
+        console.error('Error deleting link:', err);
+        res.status(500).json({ message: "An error occurred while deleting the link" });
     }
 }
