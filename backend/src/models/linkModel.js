@@ -37,10 +37,10 @@ const insertLink = async (id, userId, original_url, short_code) => {
 
 }
 
-const deleteLink = async (id, userId) => {
-    const query = `DELETE FROM links WHERE id = $1 AND user_id = $2 RETURNING *`;
+const deleteLink = async (short_code, userId) => {
+    const query = `DELETE FROM links WHERE short_code = $1 AND user_id = $2 RETURNING *`;
     try {
-        const result = await pool.query(query, [id, userId]);
+        const result = await pool.query(query, [short_code, userId]);
         return result.rows[0];
     } catch (err) {
         throw err;

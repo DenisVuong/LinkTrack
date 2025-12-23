@@ -13,10 +13,10 @@ services:
       - pgdata:/var/lib/postgresql/data
       #initialisation de la BD et peuplement
       # Ici c'est la version où ca prend tout les fichiers du dossier en compte
-      - ./backend/database:/docker-entrypoint-initdb.d
+      #- ./backend/database:/docker-entrypoint-initdb.d
 
       # Ici c'est la version où ca ne prend que un fichier en compte
-      #- ./backend/database/schema.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./backend/database/schema.sql:/docker-entrypoint-initdb.d/init.sql
 
 # Déclaration du volume de stockage
 volumes:

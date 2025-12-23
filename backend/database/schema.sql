@@ -40,8 +40,8 @@ CREATE TABLE links (
     visit_count INTEGER DEFAULT 0 
 );
 
--- Ici, on force le compteur de id links à démarrer à 1000
-ALTER SEQUENCE links_id_seq RESTART WITH 1000;
+-- Ici, on force le compteur de id links à démarrer à 1000000
+ALTER SEQUENCE links_id_seq RESTART WITH 1000000;
 
 -- 3. Table des Statistiques (Clicks)
 -- C'est la table "Big Data". Une ligne est créée à chaque clic.

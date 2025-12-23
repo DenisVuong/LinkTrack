@@ -1,5 +1,5 @@
 -- Généré par Gemini
-
+/*
 -- 1. On nettoie tout avant de remplir
 TRUNCATE TABLE clicks, links, user_roles, roles, users RESTART IDENTITY CASCADE;
 
@@ -36,3 +36,5 @@ INSERT INTO clicks (link_id, ip_address, user_agent, referer, clicked_at) VALUES
 (1, '44.55.66.77', 'Mozilla/5.0 (iPhone; CPU iPhone OS 14)', 'https://facebook.com/', NOW() - INTERVAL '1 hour'),
 (2, '88.99.100.101', 'Mozilla/5.0 (Linux; Android 10)', 'https://t.co/', NOW() - INTERVAL '2 days'),
 (2, '192.168.1.55', 'Mozilla/5.0 (Windows NT 10.0)', 'Direct', NOW() - INTERVAL '1 day');
+
+*/

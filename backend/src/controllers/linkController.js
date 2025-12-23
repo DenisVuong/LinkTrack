@@ -46,11 +46,11 @@ export const getMyLinks = async (req, res) => {
 }
 
 export const deleteLink = async (req, res) => {
-    const linkId = req.params.id;
+    const shortCode = req.params.short_code;
     const userId = req.user.userId;
 
     try {
-        const deletedLink = await linkModel.deleteLink(linkId, userId);
+        const deletedLink = await linkModel.deleteLink(shortCode, userId);
 
         if (!deletedLink) {
             return res.status(404).json({ message: "Link not found or not authorized" });
