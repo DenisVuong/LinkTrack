@@ -12,8 +12,6 @@ const getAllLinks = async (user_id) => {
     }
 };
 
-
-
 const getNextId = async () => {
     const query = "SELECT nextval('links_id_seq') AS next_id";
     try {
@@ -72,7 +70,6 @@ const getLinkById = async (id) => {
 
 export default {
     getAllLinks,
-
     getNextId,
     insertLink,
     deleteLink,

@@ -53,8 +53,3 @@ export const unshortlink = (shortlink) => {
 
     return result
 }
-
-module.exports = { shortlink, unshortlink };
-
-
-

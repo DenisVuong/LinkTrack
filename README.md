@@ -10,7 +10,7 @@
 
 *   **Backend :** Node.js (Express), ES Modules
 *   **Base de données :** PostgreSQL (Relationnel strict)
-*   **Frontend :** React (Prévu)
+*   **Frontend :** React, Tailwind CSS (Prévu)
 *   **Outils :** Git, Postman
 
 ## 🚀 Prérequis
@@ -77,4 +77,4 @@ LinkTrack/
 *   `DELETE /api/links/:id` : Supprimer un lien (Authentifié)
 
 ---
-*Développé avec ❤️ par Denis Vuong*
+*Développé par Denis Vuong*
