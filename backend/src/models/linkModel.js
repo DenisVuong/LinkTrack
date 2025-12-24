@@ -68,6 +68,31 @@ const getLinkById = async (id) => {
     }
 }
 
+const getLinkByShortCode = async (shortCode) => {
+    const query = `SELECT * FROM links WHERE short_code = $1`;
+    try {
+        const result = await pool.query(query, [shortCode]);
+        return result.rows[0];
+    } catch (err) {
+        throw err;
+    }
+}
+
+const incrementVisitCount = async (linkId) => {
+    const query = `
+        UPDATE links 
+        SET visit_count = visit_count + 1 
+        WHERE id = $1 
+        RETURNING *
+    `;
+    try {
+        const result = await pool.query(query, [linkId]);
+        return result.rows[0];
+    } catch (err) {
+        throw err;
+    }
+}
+
 export default {
     getAllLinks,
     getNextId,
@@ -75,4 +100,6 @@ export default {
     deleteLink,
     doesUrlExist,
     getLinkById,
+    getLinkByShortCode,
+    incrementVisitCount,
 };
