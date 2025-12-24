@@ -1,0 +1,251 @@
+<html>
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Link</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      window.FontAwesomeConfig = {
+        autoReplaceSvg: 'nest'
+      };
+    </script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"
+      crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap"
+      rel="stylesheet">
+    <style>
+      ::-webkit-scrollbar
+      {
+        display: none;
+      }
+
+      *
+      {
+        font-family: 'Inter', sans-serif;
+      }
+    </style>
+    <script>
+      tailwind.config = {
+        theme:
+        {
+          extend:
+          {
+            colors:
+            {
+              primary: '#667eea',
+              secondary: '#764ba2',
+              accent: '#f093fb'
+            }
+          }
+        }
+      }
+    </script>
+    <style data-grapesjs-styles="true">
+      *
+      {
+        box-sizing: border-box;
+      }
+
+      body
+      {
+        margin: 0;
+      }
+
+      ::-webkit-scrollbar
+      {
+        display: none;
+      }
+
+      *
+      {
+        font-family: "Inter", sans-serif;
+      }
+
+      #i6n9w9
+      {
+        width: 68%;
+      }
+    </style>
+  </head>
+
+  <body class="bg-gray-50 min-h-screen">
+    <!-- Header -->
+    <header id="header"
+      class="sticky top-0 z-50 bg-white border-b border-gray-200 shadow-sm">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-16">
+          <div class="flex items-center">
+            <div class="flex-shrink-0">
+              <h1
+                class="text-2xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+                LinkTrack</h1>
+            </div>
+          </div>
+          <div class="flex items-center space-x-4">
+            <div class="flex items-center space-x-3"><img
+                src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-1.jpg"
+                alt="Profile" class="h-8 w-8 rounded-full">
+              <div class="hidden md:block">
+                <p class="text-sm font-medium text-gray-700">Sarah Chen</p>
+                <p class="text-xs text-gray-500">sarah@example.com</p>
+              </div><button
+                class="p-1 text-gray-400 hover:text-gray-600 transition-colors"><i
+                  class="fa-solid fa-chevron-down text-sm"></i></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header><!-- Main Content -->
+    <main id="main-content" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <!-- Breadcrumb -->
+      <nav id="breadcrumb-nav" class="mb-6">
+        <div class="flex items-center space-x-2 text-sm"><a href="#"
+            class="text-gray-500 hover:text-primary transition-colors">Dashboard</a><i
+            class="fa-solid fa-chevron-right text-gray-400 text-xs"></i><span
+            class="text-gray-900 font-medium">Create Link</span></div>
+      </nav><!-- Page Header -->
+      <section id="page-header" class="mb-8">
+        <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+          <div class="flex items-center justify-between">
+            <div>
+              <h2 class="text-2xl font-bold text-gray-900 mb-2">Create New Link
+              </h2>
+              <p class="text-gray-600">Transform your long URLs into short,
+                trackable links with detailed analytics.</p>
+            </div><button
+              class="text-gray-400 hover:text-gray-600 transition-colors"><i
+                class="fa-solid fa-question-circle text-xl"></i></button>
+          </div>
+        </div>
+      </section>
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <!-- Main Form Section -->
+        <div class="lg:col-span-2 space-y-6">
+          <!-- URL Input Section -->
+          <section id="url-input-section"
+            class="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+            <h3 class="text-xl font-bold text-gray-900 mb-6">URL Information
+            </h3>
+            <div class="space-y-6">
+              <div><label
+                  class="block text-sm font-medium text-gray-700 mb-2">Original
+                  URL *</label>
+                <div class="relative"><input type="url"
+                    placeholder="https://example.com/your-long-url"
+                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all"><button
+                    class="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-primary"><i
+                      class="fa-solid fa-paste"></i></button></div>
+                <p class="text-xs text-gray-500 mt-1">Enter the URL you want to
+                  shorten</p>
+              </div>
+              <div><label
+                  class="block text-sm font-medium text-gray-700 mb-2">Custom
+                  Alias (Optional)</label>
+                <div class="flex"><span
+                    class="inline-flex items-center px-3 py-3 border border-r-0 border-gray-300 bg-gray-50 text-gray-500 text-sm rounded-l-lg">
+                    lnk.tk/
+                  </span><input type="text" placeholder="my-custom-link"
+                    class="flex-1 px-4 py-3 border border-gray-300 rounded-r-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all">
+                </div>
+                <p class="text-xs text-gray-500 mt-1">Leave blank for
+                  auto-generated short URL</p>
+              </div>
+              <div><label
+                  class="block text-sm font-medium text-gray-700 mb-2">Title
+                  (Optional)</label><input type="text"
+                  placeholder="Link title for easy identification"
+                  class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all">
+              </div>
+              <div><label
+                  class="block text-sm font-medium text-gray-700 mb-2">Description
+                  (Optional)</label><textarea rows="3" placeholder="Brief description of your link..." class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all resize-none"></textarea>
+              </div>
+            </div>
+          </section><!-- Advanced Settings -->
+          <!-- Action Buttons -->
+          <section id="action-buttons" class="flex flex-col sm:flex-row gap-4">
+            <button
+              class="flex-1 bg-gradient-to-r from-primary to-secondary text-white px-6 py-3 rounded-lg font-medium hover:shadow-lg transition-all duration-300 flex items-center justify-center space-x-2"><i
+                class="fa-solid fa-link"></i><span>Create Short
+                Link</span></button><button
+              class="px-6 py-3 border border-gray-300 text-gray-700 rounded-lg font-medium hover:bg-gray-50 transition-colors">
+              Save as Draft
+            </button></section>
+        </div><!-- Sidebar -->
+        <div class="space-y-6">
+          <!-- Preview Card -->
+          <section id="preview-card"
+            class="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+            <h3 class="text-lg font-bold text-gray-900 mb-4">Link Preview</h3>
+            <div class="space-y-4">
+              <div
+                class="p-4 bg-gray-50 rounded-lg border-2 border-dashed border-gray-300">
+                <div class="text-center text-gray-500"><i
+                    class="fa-solid fa-link text-2xl mb-2"></i>
+                  <p class="text-sm">Preview will appear here</p>
+                </div>
+              </div>
+              <div class="text-xs text-gray-500 space-y-1">
+                <p><span class="font-medium">Short URL:</span> lnk.tk/preview
+                </p>
+                <p><span class="font-medium">Original:</span> Not set</p>
+                <p><span class="font-medium">Created:</span> Just now</p>
+              </div>
+            </div>
+          </section><!-- Recent Templates -->
+          <!-- Statistics -->
+          <section id="stats-sidebar"
+            class="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+            <h3 class="text-lg font-bold text-gray-900 mb-4">Your Stats</h3>
+            <div class="space-y-4">
+              <div class="flex justify-between items-center"><span
+                  class="text-sm text-gray-600">Total Links</span><span
+                  class="text-sm font-bold text-gray-900">247</span></div>
+              <div class="flex justify-between items-center"><span
+                  class="text-sm text-gray-600">This Month</span><span
+                  class="text-sm font-bold text-primary">+12</span></div>
+              <div class="flex justify-between items-center"><span
+                  class="text-sm text-gray-600">Total Clicks</span><span
+                  class="text-sm font-bold text-gray-900">12,847</span></div>
+              <div class="w-full bg-gray-200 rounded-full h-2">
+                <div
+                  class="bg-gradient-to-r from-primary to-secondary h-2 rounded-full"
+                  id="i6n9w9"></div>
+              </div>
+              <p class="text-xs text-gray-500 text-center">68% of monthly goal
+              </p>
+            </div>
+          </section>
+        </div>
+      </div>
+    </main>
+    <script>
+      document.getElementById('toggle-advanced').addEventListener('click',
+        function()
+        {
+          const options = document.getElementById('advanced-options');
+          const icon = this.querySelector('i');
+          const text = this.querySelector('span');
+
+          if (options.classList.contains('hidden'))
+          {
+            options.classList.remove('hidden');
+            icon.classList.remove('fa-chevron-down');
+            icon.classList.add('fa-chevron-up');
+            text.textContent = 'Hide Options';
+          }
+          else
+          {
+            options.classList.add('hidden');
+            icon.classList.remove('fa-chevron-up');
+            icon.classList.add('fa-chevron-down');
+            text.textContent = 'Show Options';
+          }
+        });
+    </script>
+  </body>
+
+</html>

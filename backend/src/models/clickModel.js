@@ -20,7 +20,7 @@ const insertClick = async (linkId, ipAddress, userAgent, referer) => {
 
 const getClicksByLinkId = async (linkId) => {
     const query = `
-        SELECT * FROM clicks WHERE link_id = $1 ORDER BY created_at DESC;
+        SELECT * FROM clicks WHERE link_id = $1 ORDER BY clicked_at DESC;
     `;
 
     try {
@@ -37,7 +37,7 @@ const getClicksByUserId = async (userId) => {
         SELECT clicks.* FROM clicks 
         JOIN links ON clicks.link_id = links.id
         WHERE links.user_id = $1
-        ORDER BY clicks.created_at DESC;
+        ORDER BY clicks.clicked_at DESC;
     `;
 
     try {

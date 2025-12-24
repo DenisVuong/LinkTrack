@@ -1,0 +1,388 @@
+<html>
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      window.FontAwesomeConfig = {
+        autoReplaceSvg: 'nest'
+      };
+    </script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"
+      crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap"
+      rel="stylesheet">
+    <script src="https://cdn.plot.ly/plotly-3.1.1.min.js"></script>
+    <style>
+      ::-webkit-scrollbar
+      {
+        display: none;
+      }
+
+      *
+      {
+        font-family: 'Inter', sans-serif;
+      }
+    </style>
+    <script>
+      tailwind.config = {
+        theme:
+        {
+          extend:
+          {
+            colors:
+            {
+              primary: '#667eea',
+              secondary: '#764ba2',
+              accent: '#f093fb'
+            }
+          }
+        }
+      }
+    </script>
+    <style data-grapesjs-styles="true">
+      *
+      {
+        box-sizing: border-box;
+      }
+
+      body
+      {
+        margin: 0;
+      }
+
+      ::-webkit-scrollbar
+      {
+        display: none;
+      }
+
+      *
+      {
+        font-family: "Inter", sans-serif;
+        box-sizing: border-box;
+      }
+
+      body
+      {
+        margin-top: 0px;
+        margin-right: 0px;
+        margin-bottom: 0px;
+        margin-left: 0px;
+      }
+
+      #clickChart
+      {
+        height: 300px;
+      }
+
+      #trafficChart
+      {
+        height: 300px;
+      }
+    </style>
+  </head>
+
+  <body class="bg-gray-50 min-h-screen">
+    <!-- Header -->
+    <header id="header"
+      class="sticky top-0 z-50 bg-white border-b border-gray-200 shadow-sm">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-16">
+          <div class="flex items-center">
+            <div class="flex-shrink-0">
+              <h1
+                class="text-2xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+                LinkTrack</h1>
+            </div>
+          </div>
+          <div class="flex items-center space-x-4">
+            <div class="flex items-center space-x-3"><img
+                src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-1.jpg"
+                alt="Profile" class="h-8 w-8 rounded-full">
+              <div class="hidden md:block">
+                <p class="text-sm font-medium text-gray-700">Sarah Chen</p>
+                <p class="text-xs text-gray-500">sarah@example.com</p>
+              </div><button
+                class="p-1 text-gray-400 hover:text-gray-600 transition-colors"><i
+                  class="fa-solid fa-chevron-down text-sm"></i></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header><!-- Main Content -->
+    <main id="main-content" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <!-- Welcome Section -->
+      <section id="welcome-section" class="mb-8">
+        <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+          <div class="flex items-center justify-between">
+            <div>
+              <h2 class="text-2xl font-bold text-gray-900 mb-2">Welcome back,
+                Sarah!</h2>
+              <p class="text-gray-600">Here's an overview of your link
+                performance today.</p>
+            </div><button
+              class="bg-gradient-to-r from-primary to-secondary text-white px-6 py-3 rounded-lg font-medium hover:shadow-lg transition-all duration-300 flex items-center space-x-2"><i
+                class="fa-solid fa-plus"></i><span>Create New
+                Link</span></button>
+          </div>
+        </div>
+      </section><!-- Stats Overview -->
+      <section id="stats-overview" class="mb-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+            <div class="flex items-center justify-between">
+              <div>
+                <p class="text-sm font-medium text-gray-600">Total Links</p>
+                <p class="text-3xl font-bold text-gray-900 mt-2">247</p>
+                <p class="text-sm text-green-600 mt-1">+12% from last month</p>
+              </div>
+              <div
+                class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
+                <i class="fa-solid fa-link text-primary text-xl"></i></div>
+            </div>
+          </div>
+          <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+            <div class="flex items-center justify-between">
+              <div>
+                <p class="text-sm font-medium text-gray-600">Total Clicks</p>
+                <p class="text-3xl font-bold text-gray-900 mt-2">12,847</p>
+                <p class="text-sm text-green-600 mt-1">+8% from last week</p>
+              </div>
+              <div
+                class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center">
+                <i class="fa-solid fa-mouse-pointer text-secondary text-xl"></i>
+              </div>
+            </div>
+          </div>
+          <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+            <div class="flex items-center justify-between">
+              <div>
+                <p class="text-sm font-medium text-gray-600">Click Rate</p>
+                <p class="text-3xl font-bold text-gray-900 mt-2">4.2%</p>
+                <p class="text-sm text-red-600 mt-1">-2% from yesterday</p>
+              </div>
+              <div
+                class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
+                <i class="fa-solid fa-chart-line text-green-600 text-xl"></i>
+              </div>
+            </div>
+          </div>
+          <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+            <div class="flex items-center justify-between">
+              <div>
+                <p class="text-sm font-medium text-gray-600">Active Links</p>
+                <p class="text-3xl font-bold text-gray-900 mt-2">189</p>
+                <p class="text-sm text-gray-500 mt-1">76% of total links</p>
+              </div>
+              <div
+                class="w-12 h-12 bg-yellow-100 rounded-lg flex items-center justify-center">
+                <i class="fa-solid fa-bolt text-yellow-600 text-xl"></i></div>
+            </div>
+          </div>
+        </div>
+      </section><!-- Charts Section -->
+      <section id="charts-section" class="mb-8">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+            <h3 class="text-xl font-bold text-gray-900 mb-4">Click Analytics
+            </h3>
+            <div id="clickChart"></div>
+          </div>
+          <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+            <h3 class="text-xl font-bold text-gray-900 mb-4">Traffic Sources
+            </h3>
+            <div id="trafficChart"></div>
+          </div>
+        </div>
+      </section><!-- Recent Links -->
+      <section id="recent-links" class="mb-8">
+        <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+          <div class="flex items-center justify-between mb-6">
+            <h3 class="text-xl font-bold text-gray-900">Recent Links</h3><button
+              class="text-primary hover:text-secondary font-medium">View
+              All</button>
+          </div>
+          <div class="overflow-x-auto">
+            <table class="w-full">
+              <thead>
+                <tr class="border-b border-gray-200">
+                  <th class="text-left py-3 px-4 font-medium text-gray-600">
+                    Short URL</th>
+                  <th class="text-left py-3 px-4 font-medium text-gray-600">
+                    Original URL</th>
+                  <th class="text-left py-3 px-4 font-medium text-gray-600">
+                    Clicks</th>
+                  <th class="text-left py-3 px-4 font-medium text-gray-600">
+                    Created</th>
+                  <th class="text-left py-3 px-4 font-medium text-gray-600">
+                    Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="border-b border-gray-100 hover:bg-gray-50">
+                  <td class="py-4 px-4"><span
+                      class="text-primary font-medium">lnk.tk/abc123</span></td>
+                  <td class="py-4 px-4"><span
+                      class="text-gray-600 truncate max-w-xs block">https://example.com/very-long-url-path</span>
+                  </td>
+                  <td class="py-4 px-4"><span
+                      class="text-gray-900 font-medium">1,247</span></td>
+                  <td class="py-4 px-4"><span class="text-gray-600">2 hours
+                      ago</span></td>
+                  <td class="py-4 px-4">
+                    <div class="flex space-x-2"><button
+                        class="text-gray-400 hover:text-primary"><i
+                          class="fa-solid fa-chart-simple"></i></button><button
+                        class="text-gray-400 hover:text-primary"><i
+                          class="fa-solid fa-copy"></i></button><button
+                        class="text-gray-400 hover:text-red-500"><i
+                          class="fa-solid fa-trash"></i></button></div>
+                  </td>
+                </tr>
+                <tr class="border-b border-gray-100 hover:bg-gray-50">
+                  <td class="py-4 px-4"><span
+                      class="text-primary font-medium">lnk.tk/xyz789</span></td>
+                  <td class="py-4 px-4"><span
+                      class="text-gray-600 truncate max-w-xs block">https://github.com/user/repository</span>
+                  </td>
+                  <td class="py-4 px-4"><span
+                      class="text-gray-900 font-medium">892</span></td>
+                  <td class="py-4 px-4"><span class="text-gray-600">1 day
+                      ago</span></td>
+                  <td class="py-4 px-4">
+                    <div class="flex space-x-2"><button
+                        class="text-gray-400 hover:text-primary"><i
+                          class="fa-solid fa-chart-simple"></i></button><button
+                        class="text-gray-400 hover:text-primary"><i
+                          class="fa-solid fa-copy"></i></button><button
+                        class="text-gray-400 hover:text-red-500"><i
+                          class="fa-solid fa-trash"></i></button></div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section><!-- Quick Actions -->
+      <section id="quick-actions" class="mb-8"></section>
+    </main>
+    <script>
+      window.addEventListener('load', function()
+      {
+        try
+        {
+          // Click Analytics Chart
+          var clickData = [
+          {
+            type: 'scatter',
+            mode: 'lines',
+            x: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+            y: [1200, 1400, 1100, 1600, 1800, 2200, 1900],
+            line:
+            {
+              color: '#667eea',
+              width: 3
+            },
+            fill: 'tozeroy',
+            fillcolor: 'rgba(102, 126, 234, 0.1)'
+          }];
+
+          var clickLayout = {
+            title:
+            {
+              text: '',
+              font:
+              {
+                size: 16
+              }
+            },
+            xaxis:
+            {
+              title: ''
+            },
+            yaxis:
+            {
+              title: 'Clicks'
+            },
+            margin:
+            {
+              t: 20,
+              r: 20,
+              b: 40,
+              l: 60
+            },
+            plot_bgcolor: '#ffffff',
+            paper_bgcolor: '#ffffff',
+            showlegend: false
+          };
+
+          Plotly.newPlot('clickChart', clickData, clickLayout,
+          {
+            responsive: true,
+            displayModeBar: false,
+            displaylogo: false
+          });
+
+          // Traffic Sources Chart
+          var trafficData = [
+          {
+            type: 'pie',
+            labels: ['Direct', 'Social Media', 'Email', 'Search',
+              'Referral'
+            ],
+            values: [35, 25, 20, 15, 5],
+            marker:
+            {
+              colors: ['#667eea', '#764ba2', '#f093fb', '#4ade80',
+                '#fbbf24'
+              ]
+            }
+          }];
+
+          var trafficLayout = {
+            title:
+            {
+              text: '',
+              font:
+              {
+                size: 16
+              }
+            },
+            margin:
+            {
+              t: 20,
+              r: 20,
+              b: 20,
+              l: 20
+            },
+            plot_bgcolor: '#ffffff',
+            paper_bgcolor: '#ffffff',
+            showlegend: true,
+            legend:
+            {
+              orientation: 'h',
+              y: -0.1
+            }
+          };
+
+          Plotly.newPlot('trafficChart', trafficData, trafficLayout,
+          {
+            responsive: true,
+            displayModeBar: false,
+            displaylogo: false
+          });
+
+        }
+        catch (e)
+        {
+          console.error('Chart rendering failed:', e);
+        }
+      });
+    </script>
+  </body>
+
+</html>

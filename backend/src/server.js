@@ -14,7 +14,7 @@ const __dirname = path.dirname(__filename);
 const app = express();
 
 const corsOptions = {
-    origin: "http://localhost:8081",
+    origin: "http://localhost:3000",
 };
 
 app.use(cors(corsOptions));
@@ -42,7 +42,7 @@ app.use("/api/link", linkRoutes);
 // Routes de redirection publiques
 app.use("/", redirectRoutes);
 
-// Middleware 404 global - Doit être en dernier
+// Middleware 404 global
 app.use((req, res) => {
     res.status(404).sendFile(path.join(__dirname, 'views', '404.html'));
 });

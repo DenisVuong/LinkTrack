@@ -1,0 +1,615 @@
+<html>
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analytics</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      window.FontAwesomeConfig = {
+        autoReplaceSvg: 'nest'
+      };
+    </script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"
+      crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap"
+      rel="stylesheet">
+    <script src="https://cdn.plot.ly/plotly-3.1.1.min.js"></script>
+    <style>
+      ::-webkit-scrollbar
+      {
+        display: none;
+      }
+
+      *
+      {
+        font-family: 'Inter', sans-serif;
+      }
+    </style>
+    <script>
+      tailwind.config = {
+        theme:
+        {
+          extend:
+          {
+            colors:
+            {
+              primary: '#667eea',
+              secondary: '#764ba2',
+              accent: '#f093fb'
+            }
+          }
+        }
+      }
+    </script>
+    <style data-grapesjs-styles="true">
+      *
+      {
+        box-sizing: border-box;
+      }
+
+      body
+      {
+        margin: 0;
+      }
+
+      ::-webkit-scrollbar
+      {
+        display: none;
+      }
+
+      *
+      {
+        font-family: "Inter", sans-serif;
+      }
+
+      #clickTrendsChart
+      {
+        height: 300px;
+      }
+
+      #trafficSourcesChart
+      {
+        height: 300px;
+      }
+
+      #geoChart
+      {
+        height: 350px;
+      }
+
+      #deviceChart
+      {
+        height: 300px;
+      }
+    </style>
+  </head>
+
+  <body class="bg-gray-50 min-h-screen">
+    <!-- Header -->
+    <header id="header"
+      class="sticky top-0 z-50 bg-white border-b border-gray-200 shadow-sm">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-16">
+          <div class="flex items-center">
+            <div class="flex-shrink-0">
+              <h1
+                class="text-2xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+                LinkTrack</h1>
+            </div>
+          </div>
+          <div class="flex items-center space-x-4">
+            <div class="flex items-center space-x-3"><img
+                src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-1.jpg"
+                alt="Profile" class="h-8 w-8 rounded-full">
+              <div class="hidden md:block">
+                <p class="text-sm font-medium text-gray-700">Sarah Chen</p>
+                <p class="text-xs text-gray-500">sarah@example.com</p>
+              </div><button
+                class="p-1 text-gray-400 hover:text-gray-600 transition-colors"><i
+                  class="fa-solid fa-chevron-down text-sm"></i></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header><!-- Main Content -->
+    <main id="main-content" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <!-- Breadcrumb Navigation -->
+      <nav id="breadcrumb-nav" class="mb-6">
+        <div class="flex items-center space-x-2 text-sm"><a href="#"
+            class="text-primary hover:text-secondary font-medium">Dashboard</a><i
+            class="fa-solid fa-chevron-right text-gray-400 text-xs"></i><span
+            class="text-gray-600">Analytics</span><i
+            class="fa-solid fa-chevron-right text-gray-400 text-xs"></i><span
+            class="text-gray-900 font-medium">lnk.tk/abc123</span></div>
+      </nav><!-- Link Details Header -->
+      <section id="link-header" class="mb-8">
+        <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+          <div class="flex items-start justify-between">
+            <div class="flex-1">
+              <div class="flex items-center space-x-3 mb-4">
+                <div
+                  class="w-12 h-12 bg-gradient-to-r from-primary to-secondary rounded-lg flex items-center justify-center">
+                  <i class="fa-solid fa-link text-white text-xl"></i></div>
+                <div>
+                  <h2 class="text-2xl font-bold text-gray-900">Link Analytics
+                  </h2>
+                  <p class="text-gray-600">Detailed performance data for your
+                    link</p>
+                </div>
+              </div>
+              <div class="space-y-3">
+                <div class="flex items-center space-x-3"><span
+                    class="text-sm font-medium text-gray-600 w-20">Short
+                    URL:</span><span
+                    class="text-primary font-medium bg-blue-50 px-3 py-1 rounded-lg">lnk.tk/abc123</span><button
+                    class="text-gray-400 hover:text-primary"><i
+                      class="fa-solid fa-copy"></i></button></div>
+                <div class="flex items-center space-x-3"><span
+                    class="text-sm font-medium text-gray-600 w-20">Original:</span><span
+                    class="text-gray-700 truncate max-w-md">https://example.com/very-long-url-path-that-was-shortened</span>
+                </div>
+                <div class="flex items-center space-x-3"><span
+                    class="text-sm font-medium text-gray-600 w-20">Created:</span><span
+                    class="text-gray-700">March 15, 2024 at 2:30 PM</span></div>
+              </div>
+            </div>
+            <div class="flex space-x-3"><button
+                class="bg-gray-100 text-gray-700 px-4 py-2 rounded-lg font-medium hover:bg-gray-200 transition-colors flex items-center space-x-2"><i
+                  class="fa-solid fa-edit"></i><span>Edit</span></button><button
+                class="bg-gradient-to-r from-primary to-secondary text-white px-4 py-2 rounded-lg font-medium hover:shadow-lg transition-all duration-300 flex items-center space-x-2"><i
+                  class="fa-solid fa-share"></i><span>Share</span></button>
+            </div>
+          </div>
+        </div>
+      </section><!-- Key Metrics -->
+      <section id="key-metrics" class="mb-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+            <div class="flex items-center justify-between">
+              <div>
+                <p class="text-sm font-medium text-gray-600">Total Clicks</p>
+                <p class="text-3xl font-bold text-gray-900 mt-2">1,247</p>
+                <p class="text-sm text-green-600 mt-1">+15% vs last week</p>
+              </div>
+              <div
+                class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
+                <i class="fa-solid fa-mouse-pointer text-primary text-xl"></i>
+              </div>
+            </div>
+          </div>
+          <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+            <div class="flex items-center justify-between">
+              <div>
+                <p class="text-sm font-medium text-gray-600">Unique Visitors</p>
+                <p class="text-3xl font-bold text-gray-900 mt-2">892</p>
+                <p class="text-sm text-green-600 mt-1">+8% vs last week</p>
+              </div>
+              <div
+                class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center">
+                <i class="fa-solid fa-users text-secondary text-xl"></i></div>
+            </div>
+          </div>
+          <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+            <div class="flex items-center justify-between">
+              <div>
+                <p class="text-sm font-medium text-gray-600">Click-through Rate
+                </p>
+                <p class="text-3xl font-bold text-gray-900 mt-2">4.8%</p>
+                <p class="text-sm text-red-600 mt-1">-2% vs last week</p>
+              </div>
+              <div
+                class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
+                <i class="fa-solid fa-percentage text-green-600 text-xl"></i>
+              </div>
+            </div>
+          </div>
+          <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+            <div class="flex items-center justify-between">
+              <div>
+                <p class="text-sm font-medium text-gray-600">Avg. Session</p>
+                <p class="text-3xl font-bold text-gray-900 mt-2">2m 34s</p>
+                <p class="text-sm text-gray-500 mt-1">Time on target page</p>
+              </div>
+              <div
+                class="w-12 h-12 bg-yellow-100 rounded-lg flex items-center justify-center">
+                <i class="fa-solid fa-clock text-yellow-600 text-xl"></i></div>
+            </div>
+          </div>
+        </div>
+      </section><!-- Analytics Charts -->
+      <section id="analytics-charts" class="mb-8">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+            <div class="flex items-center justify-between mb-4">
+              <h3 class="text-xl font-bold text-gray-900">Click Trends</h3>
+              <select
+                class="text-sm border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary">
+                <option>Last 7 days</option>
+                <option>Last 30 days</option>
+                <option>Last 3 months</option>
+              </select>
+            </div>
+            <div id="clickTrendsChart"></div>
+          </div>
+          <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+            <h3 class="text-xl font-bold text-gray-900 mb-4">Traffic Sources
+            </h3>
+            <div id="trafficSourcesChart"></div>
+          </div>
+        </div>
+      </section><!-- Geographic Data -->
+      <section id="geographic-data" class="mb-8">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          <div
+            class="lg:col-span-2 bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+            <h3 class="text-xl font-bold text-gray-900 mb-4">Geographic
+              Distribution</h3>
+            <div id="geoChart"></div>
+          </div>
+          <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+            <h3 class="text-xl font-bold text-gray-900 mb-4">Top Countries</h3>
+            <div class="space-y-4">
+              <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-3"><span
+                    class="text-2xl">🇺🇸</span><span
+                    class="font-medium text-gray-900">United States</span></div>
+                <div class="text-right">
+                  <p class="font-bold text-gray-900">432</p>
+                  <p class="text-sm text-gray-500">34.6%</p>
+                </div>
+              </div>
+              <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-3"><span
+                    class="text-2xl">🇬🇧</span><span
+                    class="font-medium text-gray-900">United Kingdom</span>
+                </div>
+                <div class="text-right">
+                  <p class="font-bold text-gray-900">287</p>
+                  <p class="text-sm text-gray-500">23.0%</p>
+                </div>
+              </div>
+              <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-3"><span
+                    class="text-2xl">🇩🇪</span><span
+                    class="font-medium text-gray-900">Germany</span></div>
+                <div class="text-right">
+                  <p class="font-bold text-gray-900">156</p>
+                  <p class="text-sm text-gray-500">12.5%</p>
+                </div>
+              </div>
+              <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-3"><span
+                    class="text-2xl">🇫🇷</span><span
+                    class="font-medium text-gray-900">France</span></div>
+                <div class="text-right">
+                  <p class="font-bold text-gray-900">124</p>
+                  <p class="text-sm text-gray-500">9.9%</p>
+                </div>
+              </div>
+              <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-3"><span
+                    class="text-2xl">🇨🇦</span><span
+                    class="font-medium text-gray-900">Canada</span></div>
+                <div class="text-right">
+                  <p class="font-bold text-gray-900">98</p>
+                  <p class="text-sm text-gray-500">7.9%</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section><!-- Device & Browser Analytics -->
+      <section id="device-browser-analytics" class="mb-8">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+            <h3 class="text-xl font-bold text-gray-900 mb-4">Device Types</h3>
+            <div id="deviceChart"></div>
+          </div>
+          <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+            <h3 class="text-xl font-bold text-gray-900 mb-4">Browser
+              Distribution</h3>
+            <div class="space-y-4">
+              <div
+                class="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                <div class="flex items-center space-x-3"><i
+                    class="fa-brands fa-chrome text-xl text-blue-500"></i><span
+                    class="font-medium text-gray-900">Chrome</span></div>
+                <div class="text-right">
+                  <p class="font-bold text-gray-900">687</p>
+                  <p class="text-sm text-gray-500">55.1%</p>
+                </div>
+              </div>
+              <div
+                class="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                <div class="flex items-center space-x-3"><i
+                    class="fa-brands fa-safari text-xl text-blue-400"></i><span
+                    class="font-medium text-gray-900">Safari</span></div>
+                <div class="text-right">
+                  <p class="font-bold text-gray-900">298</p>
+                  <p class="text-sm text-gray-500">23.9%</p>
+                </div>
+              </div>
+              <div
+                class="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                <div class="flex items-center space-x-3"><i
+                    class="fa-brands fa-firefox text-xl text-orange-500"></i><span
+                    class="font-medium text-gray-900">Firefox</span></div>
+                <div class="text-right">
+                  <p class="font-bold text-gray-900">156</p>
+                  <p class="text-sm text-gray-500">12.5%</p>
+                </div>
+              </div>
+              <div
+                class="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                <div class="flex items-center space-x-3"><i
+                    class="fa-brands fa-edge text-xl text-blue-600"></i><span
+                    class="font-medium text-gray-900">Edge</span></div>
+                <div class="text-right">
+                  <p class="font-bold text-gray-900">106</p>
+                  <p class="text-sm text-gray-500">8.5%</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section><!-- Click Timeline -->
+      <section id="click-timeline" class="mb-8">
+        <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+          <h3 class="text-xl font-bold text-gray-900 mb-4">Recent Activity</h3>
+          <div class="space-y-4 max-h-80 overflow-y-auto">
+            <div class="flex items-center space-x-4 p-3 bg-gray-50 rounded-lg">
+              <div class="w-2 h-2 bg-green-500 rounded-full"></div>
+              <div class="flex-1">
+                <p class="text-sm font-medium text-gray-900">New click from
+                  United States</p>
+                <p class="text-xs text-gray-500">Chrome on Windows • 2 minutes
+                  ago</p>
+              </div>
+              <div class="text-xs text-gray-400"><i
+                  class="fa-solid fa-external-link"></i></div>
+            </div>
+            <div class="flex items-center space-x-4 p-3 bg-gray-50 rounded-lg">
+              <div class="w-2 h-2 bg-blue-500 rounded-full"></div>
+              <div class="flex-1">
+                <p class="text-sm font-medium text-gray-900">Click from United
+                  Kingdom</p>
+                <p class="text-xs text-gray-500">Safari on iPhone • 5 minutes
+                  ago</p>
+              </div>
+              <div class="text-xs text-gray-400"><i
+                  class="fa-solid fa-mobile"></i></div>
+            </div>
+            <div class="flex items-center space-x-4 p-3 bg-gray-50 rounded-lg">
+              <div class="w-2 h-2 bg-purple-500 rounded-full"></div>
+              <div class="flex-1">
+                <p class="text-sm font-medium text-gray-900">Click from Germany
+                </p>
+                <p class="text-xs text-gray-500">Firefox on Linux • 8 minutes
+                  ago</p>
+              </div>
+              <div class="text-xs text-gray-400"><i
+                  class="fa-solid fa-desktop"></i></div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <script>
+      window.addEventListener('load', function()
+      {
+        try
+        {
+          // Click Trends Chart
+          var clickTrendsData = [
+          {
+            type: 'scatter',
+            mode: 'lines',
+            x: ['Mar 9', 'Mar 10', 'Mar 11', 'Mar 12', 'Mar 13',
+              'Mar 14', 'Mar 15'
+            ],
+            y: [120, 140, 110, 160, 180, 220, 190],
+            line:
+            {
+              color: '#667eea',
+              width: 3
+            },
+            fill: 'tozeroy',
+            fillcolor: 'rgba(102, 126, 234, 0.1)'
+          }];
+
+          var clickTrendsLayout = {
+            title:
+            {
+              text: '',
+              font:
+              {
+                size: 16
+              }
+            },
+            xaxis:
+            {
+              title: ''
+            },
+            yaxis:
+            {
+              title: 'Clicks'
+            },
+            margin:
+            {
+              t: 20,
+              r: 20,
+              b: 40,
+              l: 60
+            },
+            plot_bgcolor: '#ffffff',
+            paper_bgcolor: '#ffffff',
+            showlegend: false
+          };
+
+          Plotly.newPlot('clickTrendsChart', clickTrendsData,
+            clickTrendsLayout,
+            {
+              responsive: true,
+              displayModeBar: false,
+              displaylogo: false
+            });
+
+          // Traffic Sources Chart
+          var trafficSourcesData = [
+          {
+            type: 'pie',
+            labels: ['Direct', 'Social Media', 'Email', 'Search',
+              'Referral'
+            ],
+            values: [40, 25, 20, 10, 5],
+            marker:
+            {
+              colors: ['#667eea', '#764ba2', '#f093fb', '#4ade80',
+                '#fbbf24'
+              ]
+            }
+          }];
+
+          var trafficSourcesLayout = {
+            title:
+            {
+              text: '',
+              font:
+              {
+                size: 16
+              }
+            },
+            margin:
+            {
+              t: 20,
+              r: 20,
+              b: 20,
+              l: 20
+            },
+            plot_bgcolor: '#ffffff',
+            paper_bgcolor: '#ffffff',
+            showlegend: true,
+            legend:
+            {
+              orientation: 'h',
+              y: -0.1
+            }
+          };
+
+          Plotly.newPlot('trafficSourcesChart', trafficSourcesData,
+            trafficSourcesLayout,
+            {
+              responsive: true,
+              displayModeBar: false,
+              displaylogo: false
+            });
+
+          // Geographic Chart
+          var geoData = [
+          {
+            type: 'choropleth',
+            locationmode: 'country names',
+            locations: ['United States', 'United Kingdom', 'Germany',
+              'France', 'Canada'
+            ],
+            z: [432, 287, 156, 124, 98],
+            colorscale: [
+              [0, '#f0f9ff'],
+              [1, '#667eea']
+            ],
+            showscale: false
+          }];
+
+          var geoLayout = {
+            title:
+            {
+              text: '',
+              font:
+              {
+                size: 16
+              }
+            },
+            geo:
+            {
+              showframe: false,
+              projection:
+              {
+                type: 'mercator'
+              }
+            },
+            margin:
+            {
+              t: 20,
+              r: 20,
+              b: 20,
+              l: 20
+            },
+            plot_bgcolor: '#ffffff',
+            paper_bgcolor: '#ffffff'
+          };
+
+          Plotly.newPlot('geoChart', geoData, geoLayout,
+          {
+            responsive: true,
+            displayModeBar: false,
+            displaylogo: false
+          });
+
+          // Device Chart
+          var deviceData = [
+          {
+            type: 'pie',
+            labels: ['Desktop', 'Mobile', 'Tablet'],
+            values: [60, 35, 5],
+            marker:
+            {
+              colors: ['#667eea', '#764ba2', '#f093fb']
+            }
+          }];
+
+          var deviceLayout = {
+            title:
+            {
+              text: '',
+              font:
+              {
+                size: 16
+              }
+            },
+            margin:
+            {
+              t: 20,
+              r: 20,
+              b: 20,
+              l: 20
+            },
+            plot_bgcolor: '#ffffff',
+            paper_bgcolor: '#ffffff',
+            showlegend: true,
+            legend:
+            {
+              orientation: 'h',
+              y: -0.1
+            }
+          };
+
+          Plotly.newPlot('deviceChart', deviceData, deviceLayout,
+          {
+            responsive: true,
+            displayModeBar: false,
+            displaylogo: false
+          });
+
+        }
+        catch (e)
+        {
+          console.error('Chart rendering failed:', e);
+        }
+      });
+    </script>
+  </body>
+
+</html>

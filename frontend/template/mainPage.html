@@ -1,0 +1,273 @@
+<html>
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      window.FontAwesomeConfig = {
+        autoReplaceSvg: 'nest'
+      };
+    </script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"
+      crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap"
+      rel="stylesheet">
+    <style>
+      ::-webkit-scrollbar
+      {
+        display: none;
+      }
+
+      body
+      {
+        font-family: 'Inter', sans-serif;
+      }
+    </style>
+    <script>
+      tailwind.config = {
+        theme:
+        {
+          extend:
+          {
+            colors:
+            {
+              primary: '#667eea',
+              secondary: '#764ba2'
+            },
+            fontFamily:
+            {
+              sans: ['Inter', 'sans-serif']
+            }
+          }
+        }
+      }
+    </script>
+    <style data-grapesjs-styles="true">
+      *
+      {
+        box-sizing: border-box;
+      }
+
+      body
+      {
+        margin: 0;
+      }
+
+      ::-webkit-scrollbar
+      {
+        display: none;
+      }
+
+      body
+      {
+        font-family: "Inter", sans-serif;
+        margin-top: 0px;
+        margin-right: 0px;
+        margin-bottom: 0px;
+        margin-left: 0px;
+      }
+
+      *
+      {
+        box-sizing: border-box;
+      }
+    </style>
+  </head>
+
+  <body class="bg-gray-50">
+    <header id="header"
+      class="sticky top-0 z-50 bg-white border-b border-gray-100 shadow-sm">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-16">
+          <div id="logo-section" class="flex items-center">
+            <div class="flex items-center space-x-2">
+              <div
+                class="w-8 h-8 bg-gradient-to-br from-primary to-secondary rounded-lg flex items-center justify-center">
+                <i class="fas fa-link text-white text-sm"></i></div><span
+                class="text-xl font-bold text-gray-900">LinkTrack</span>
+            </div>
+          </div>
+          <nav id="main-nav" class="hidden md:flex items-center space-x-8">
+          </nav>
+          <div id="user-menu" class="flex items-center space-x-4"><button
+              class="text-gray-700 hover:text-primary transition-colors">Se
+              connecter</button><button
+              class="bg-gradient-to-r from-primary to-secondary text-white px-4 py-2 rounded-lg hover:shadow-lg transition-all duration-200">
+              S'inscrire
+            </button></div>
+        </div>
+      </div>
+    </header>
+    <main>
+      <section id="hero-section"
+        class="relative bg-gradient-to-br from-primary via-purple-600 to-secondary h-[600px] flex items-center">
+        <div class="absolute inset-0 bg-black bg-opacity-20"></div>
+        <div
+          class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <div id="hero-content" class="max-w-4xl mx-auto">
+            <h1
+              class="text-5xl md:text-6xl font-bold text-white mb-6 leading-tight">
+              Raccourcissez, Suivez,
+              <span class="text-yellow-300">Optimisez</span>
+            </h1>
+            <p
+              class="text-xl md:text-2xl text-gray-200 mb-8 max-w-3xl mx-auto leading-relaxed">
+              Transformez vos liens longs en URLs courtes et élégantes. Suivez
+              vos performances en temps réel et boostez votre engagement.
+            </p>
+            <div id="hero-cta"
+              class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+              <button
+                class="bg-white text-primary px-8 py-4 rounded-xl font-semibold text-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                Commencer gratuitement
+              </button></div>
+          </div>
+        </div>
+        <div class="absolute bottom-0 left-0 right-0"><svg
+            viewBox="0 0 1200 120" fill="none"
+            xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,112C672,96,768,96,864,112C960,128,1056,160,1152,160C1248,160,1344,128,1392,112L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"
+              fill="#f9fafb"></path>
+          </svg></div>
+      </section>
+      <section id="features-section" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div id="features-header" class="text-center mb-16">
+            <h2 class="text-4xl font-bold text-gray-900 mb-4">
+              Tout ce dont vous avez besoin
+            </h2>
+            <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+              Une solution complète pour gérer et optimiser vos liens en
+              quelques clics
+            </p>
+          </div>
+          <div id="features-grid" class="grid md:grid-cols-3 gap-8">
+            <div id="feature-1"
+              class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
+              <div
+                class="w-16 h-16 bg-gradient-to-br from-primary to-secondary rounded-2xl flex items-center justify-center mb-6">
+                <i class="fas fa-cut text-white text-2xl"></i></div>
+              <h3 class="text-2xl font-bold text-gray-900 mb-4">Raccourcissez
+                des liens</h3>
+              <p class="text-gray-600 leading-relaxed">
+                Transformez instantanément vos URLs longues en liens courts et
+                mémorables. Personnalisez vos alias pour une meilleure
+                reconnaissance de marque.
+              </p>
+            </div>
+            <div id="feature-2"
+              class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
+              <div
+                class="w-16 h-16 bg-gradient-to-br from-primary to-secondary rounded-2xl flex items-center justify-center mb-6">
+                <i class="fas fa-chart-line text-white text-2xl"></i></div>
+              <h3 class="text-2xl font-bold text-gray-900 mb-4">Suivez vos stats
+              </h3>
+              <p class="text-gray-600 leading-relaxed">
+                Analysez vos performances avec des statistiques détaillées :
+                clics, géolocalisation, appareils et bien plus encore.
+              </p>
+            </div>
+            <div id="feature-3"
+              class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
+              <div
+                class="w-16 h-16 bg-gradient-to-br from-primary to-secondary rounded-2xl flex items-center justify-center mb-6">
+                <i class="fas fa-share-alt text-white text-2xl"></i></div>
+              <h3 class="text-2xl font-bold text-gray-900 mb-4">Partagez
+                facilement</h3>
+              <p class="text-gray-600 leading-relaxed">
+                Intégrez vos liens raccourcis sur tous vos canaux de
+                communication : réseaux sociaux, emails, SMS et plus encore.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="cta-section"
+        class="py-20 bg-gradient-to-r from-primary to-secondary">
+        <div class="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
+          <h2 class="text-4xl md:text-5xl font-bold text-white mb-6">
+            Prêt à optimiser vos liens ?
+          </h2>
+          <p class="text-xl text-gray-200 mb-8 max-w-2xl mx-auto">
+            Rejoignez des milliers d'utilisateurs qui font confiance à LinkTrack
+            pour leurs liens
+          </p><button
+            class="bg-white text-primary px-8 py-4 rounded-xl font-semibold text-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+            Commencer maintenant
+          </button>
+        </div>
+      </section>
+    </main>
+    <footer id="footer" class="bg-gray-900 text-white py-16">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div id="footer-content" class="grid md:grid-cols-4 gap-8">
+          <div id="footer-brand">
+            <div class="flex items-center space-x-2 mb-4">
+              <div
+                class="w-8 h-8 bg-gradient-to-br from-primary to-secondary rounded-lg flex items-center justify-center">
+                <i class="fas fa-link text-white text-sm"></i></div><span
+                class="text-xl font-bold">LinkTrack</span>
+            </div>
+            <p class="text-gray-400 leading-relaxed">
+              La solution complète pour raccourcir et analyser vos liens en
+              toute simplicité.
+            </p>
+          </div>
+          <div id="footer-product">
+            <h4 class="font-semibold mb-4">Produit</h4>
+            <ul class="space-y-2">
+              <li><a href="#"
+                  class="text-gray-400 hover:text-white transition-colors">Fonctionnalités</a>
+              </li>
+              <li><a href="#"
+                  class="text-gray-400 hover:text-white transition-colors">Tarifs</a>
+              </li>
+              <li><a href="#"
+                  class="text-gray-400 hover:text-white transition-colors">API</a>
+              </li>
+            </ul>
+          </div>
+          <div id="footer-support">
+            <h4 class="font-semibold mb-4">Support</h4>
+            <ul class="space-y-2">
+              <li><a href="#"
+                  class="text-gray-400 hover:text-white transition-colors">Centre
+                  d'aide</a></li>
+              <li><a href="#"
+                  class="text-gray-400 hover:text-white transition-colors">Contact</a>
+              </li>
+              <li><a href="#"
+                  class="text-gray-400 hover:text-white transition-colors">Documentation</a>
+              </li>
+            </ul>
+          </div>
+          <div id="footer-legal">
+            <h4 class="font-semibold mb-4">Légal</h4>
+            <ul class="space-y-2">
+              <li><a href="#"
+                  class="text-gray-400 hover:text-white transition-colors">Confidentialité</a>
+              </li>
+              <li><a href="#"
+                  class="text-gray-400 hover:text-white transition-colors">CGU</a>
+              </li>
+              <li><a href="#"
+                  class="text-gray-400 hover:text-white transition-colors">Cookies</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div id="footer-bottom"
+          class="border-t border-gray-800 mt-12 pt-8 text-center">
+          <p class="text-gray-400">© 2025 LinkTrack. Tous droits réservés.
+          </p>
+        </div>
+      </div>
+    </footer>
+  </body>
+
+</html>
